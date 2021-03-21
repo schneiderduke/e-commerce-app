@@ -6,7 +6,7 @@ export class ProductsService {
     public products: Product[] = [];
 
     insertProduct(title: string, description: string, price: number) {
-        const prodId = new Date().toString();
+        const prodId = Date.now().toString();
         const newProduct = new Product(prodId,title, description, price);
         this.products.push(newProduct);
         return prodId;
@@ -33,7 +33,13 @@ export class ProductsService {
         if (title) {
             updatedProduct.price = price;
         }
+        this.products[index] = updatedProduct;
         
+    }
+
+    deleteProduct(prodId: string) {
+        const index = this.findProduct(prodId)[1];
+        this.products.splice(index, 1);
     }
 
     private findProduct(id: string): [Product,number] {
@@ -44,4 +50,6 @@ export class ProductsService {
         }
         return [product, productIndex];
     }
+
+    
 }
