@@ -13,7 +13,7 @@ export class ProductsService {
     }
 
     getProducts() {
-        return [...this.products];
+        return this.products;
     }
 
     getSingleProduct(id: string) {
