@@ -1,0 +1,59 @@
+<form [formGroup]="myForm">
+    Value: {{ myForm.value | json }}
+
+    <hr>
+
+    <div>
+        <input placeholder="email" formControlName="email">
+    </div>
+
+    <div>
+        <textarea placeholder="your message..." formControlName="message"></textarea>
+    </div>
+    
+    <div>
+        <select placeholder="career" formControlName="career">
+            <option>SW Engineer</option>
+            <option>Doctor</option>
+        </select>
+    </div>
+</form>
+
+
+
+
+<form [formGroup]="myForm2">
+    Value: {{ myForm2.value | json }}
+
+    <hr>
+
+    <div>
+        <input placeholder="email" formControlName="email">
+    </div>
+
+    <h4>Cell Phone</h4>
+
+    <div formGroupName="cellPhone">
+        <div>
+            <input placeholder="area" formControlName="area">
+        </div>
+        <div>
+            <input placeholder="prefix" formControlName="prefix">
+        </div>
+        <div>
+            <input placeholder="line" formControlName="line">
+        </div>
+    </div>
+
+    <div formGroupName="homePhone">
+        <div>
+            <input placeholder="area" formControlName="area">
+        </div>
+        <div>
+            <input placeholder="prefix" formControlName="prefix">
+        </div>
+        <div>
+            <input placeholder="line" formControlName="line">
+        </div>
+    </div>
+</form>

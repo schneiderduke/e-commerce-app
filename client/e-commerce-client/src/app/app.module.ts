@@ -8,17 +8,24 @@ import { ProductComponent } from './product/product.component';
 import { ProductService } from './product/product.service';
 import { ProductsComponent } from './products/products.component';
 import { ProductsService } from './products/products.service';
+import { EmailFormComponent } from './email-form/email-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveEmailFormComponent } from './reactive-email-form/reactive-email-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    EmailFormComponent,
+    ReactiveEmailFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     ProductsService,
