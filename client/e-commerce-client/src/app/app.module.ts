@@ -11,6 +11,8 @@ import { ProductsService } from './products/products.service';
 import { EmailFormComponent } from './email-form/email-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveEmailFormComponent } from './reactive-email-form/reactive-email-form.component';
+import { NavComponent } from './nav/nav.component';
+import { AuthGuardGuard } from './auth-guard.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { ReactiveEmailFormComponent } from './reactive-email-form/reactive-email
     ProductComponent,
     ProductsComponent,
     EmailFormComponent,
-    ReactiveEmailFormComponent
+    ReactiveEmailFormComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { ReactiveEmailFormComponent } from './reactive-email-form/reactive-email
   ],
   providers: [
     ProductsService,
-    ProductService
+    ProductService,
+    AuthGuardGuard
   ],
   bootstrap: [AppComponent]
 })
