@@ -10,10 +10,11 @@ export class ProductsController {
     addProduct(
         @Body('title') prodTitle: string,
         @Body('description') prodDesc: string,
-        @Body('price') prodPrice: number): any {
+        @Body('price') prodPrice: number,
+        @Body('imgPath') imgPath: string): any {
         
         const generatedId = this.productsService
-            .insertProduct(prodTitle, prodDesc, prodPrice);
+            .insertProduct(prodTitle, prodDesc, prodPrice, imgPath);
         return { id: generatedId };
     }
 
@@ -32,8 +33,9 @@ export class ProductsController {
         @Param('id') prodId: string,
         @Body('title') prodTitle: string,
         @Body('description') prodDesc: string,
-        @Body('price') prodPrice: number): any {
-            this.productsService.updateProduct(prodId, prodTitle, prodDesc, prodPrice);
+        @Body('price') prodPrice: number,
+        @Body('imgPath') imgPath: string): any {
+            this.productsService.updateProduct(prodId, prodTitle, prodDesc, prodPrice, imgPath);
             return null;
         }
 

@@ -5,9 +5,9 @@ import { Product } from "./product.model";
 export class ProductsService {
     public products: Product[] = [];
 
-    insertProduct(title: string, description: string, price: number) {
+    insertProduct(title: string, description: string, price: number, imgPath: string) {
         const prodId = Date.now().toString();
-        const newProduct = new Product(prodId,title, description, price);
+        const newProduct = new Product(prodId,title, description, price, imgPath);
         this.products.push(newProduct);
         return prodId;
     }
@@ -21,7 +21,7 @@ export class ProductsService {
         return {...product};
     }
 
-    updateProduct(id: string, title: string, desc: string, price: number){
+    updateProduct(id: string, title: string, desc: string, price: number, imgPath: string){
         const [product, index] = this.findProduct(id);
         const updatedProduct = {...product };
         if (title) {
@@ -30,8 +30,11 @@ export class ProductsService {
         if (desc) {
             updatedProduct.description = desc;
         }
-        if (title) {
+        if (price) {
             updatedProduct.price = price;
+        }
+        if (imgPath) {
+            updatedProduct.imgPath = imgPath;
         }
         this.products[index] = updatedProduct;
         

@@ -1,17 +1,16 @@
-<div class="container bg-primary text-light">
-    <div class="col-md-3 panel-body" *ngFor="let product of products">
-        <div>
-            <span>{{product.title}}</span>
-        </div>
-        <div>
-            <span>{{product.price}}</span>
-        </div>
-        <div>
-            <span>{{product.description}}</span>
-        </div>
-        <div>
-            <span>{{product.id}}</span>
-        </div>
+<div class="container row bg-light" style="padding: 80px;">
+    <div class="card col-md-3 panel-body border rounded" style="padding: 20px; margin: 40px;" *ngFor="let product of products">
+
+            <div class="card-title">{{product.title}}</div>
+
+            <div><img class="card-img-top img-fluid" alt="Responsive image" src= "{{ product.imgPath }}" /></div>
+
+            <div class="card-body">${{product.price}}.00</div>
+
+            <div class="card-text">{{product.description}}</div>
+
+            <div class="card-body">Product ID: {{product.id}}</div>
+
         
     </div>
 </div>

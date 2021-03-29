@@ -3,5 +3,5 @@ export class Product {
     public title: string;
     public description: string;
     public price: string;
-
+    public imgPath: string;
 }

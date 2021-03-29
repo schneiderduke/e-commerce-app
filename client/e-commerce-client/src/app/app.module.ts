@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveEmailFormComponent } from './reactive-email-form/reactive-email-form.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthGuardGuard } from './auth-guard.guard';
     ProductsComponent,
     EmailFormComponent,
     ReactiveEmailFormComponent,
-    NavComponent
+    NavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
