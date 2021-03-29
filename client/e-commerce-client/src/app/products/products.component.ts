@@ -9,8 +9,10 @@ import { ProductsService } from './products.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  products: Products;
+  products: Product[];
   data: any;
+  productsFilter: string;
+  productsLoaded: boolean = false;
   constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
@@ -21,7 +23,12 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProducts().subscribe((res => {
       this.data = res;
       this.products = this.data.products;
-      console.log(this.products);
+      this.productsLoaded = true;
     }))
+    
+  }
+  
+  receiveFilter(filter: string): any {
+    this.productsFilter = filter;
   }
 }

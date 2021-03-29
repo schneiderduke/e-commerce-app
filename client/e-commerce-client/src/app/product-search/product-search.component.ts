@@ -6,7 +6,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
   styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit {
-  @Output('productSearch') inputToParent = new EventEmitter<string>();
+  @Output('outputToParent') outputToParent = new EventEmitter<string>();
   @ViewChild('productSearch') input; 
   productSearch: ElementRef;
   constructor() { }
@@ -15,7 +15,7 @@ export class ProductSearchComponent implements OnInit {
     
   }
 
-  filter(value) {
-    this.inputToParent.emit(value);
+  filter(value: string) {
+    this.outputToParent.emit(value);
   }
 }

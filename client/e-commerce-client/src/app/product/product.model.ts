@@ -4,4 +4,5 @@ export class Product {
     public description: string;
     public price: string;
     public imgPath: string;
+    public productType: string;
 }
