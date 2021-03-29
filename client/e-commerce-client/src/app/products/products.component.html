@@ -1,18 +1,30 @@
-<div class="container row bg-light" style="padding: 80px;">
-    <div class="card col-md-3 panel-body border rounded" style="padding: 20px; margin: 40px;" *ngFor="let product of products">
+<div class="bg-light" style="padding: 80px;">
+    <div class="container">
+        <div class="row">
+            <a class="h1 col-md-3 text-dark text-left">Shoes</a>
+            <a class="h1 col-md-3 text-dark text-center">Shirts</a>
+            <a class="h1 col-md-3 text-dark text-right">Pants</a>
+            
+        </div>
+    </div>
+    <product-search></product-search>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card col-md-3 panel-body border rounded" style="padding: 20px; margin: 40px;" *ngFor="let product of products">
 
-            <div class="card-title">{{product.title}}</div>
+                    <div class="card-title">{{product.title}}</div>
 
-            <div><img class="card-img-top img-fluid" alt="Responsive image" src= "{{ product.imgPath }}" /></div>
+                    <div><img class="card-img-top img-fluid" alt="Responsive image" src= "{{ product.imgPath }}" /></div>
 
-            <div class="card-body">${{product.price}}.00</div>
+                    <div class="card-body">${{product.price}}.00</div>
 
-            <div class="card-text">{{product.description}}</div>
+                    <div class="card-text">{{product.description}}</div>
 
-            <div class="card-body">Product ID: {{product.id}}</div>
+                    <div class="card-body">Product ID: {{product.id}}</div>
 
-        
+                
+            </div>
+        </div>
     </div>
 </div>
-
 

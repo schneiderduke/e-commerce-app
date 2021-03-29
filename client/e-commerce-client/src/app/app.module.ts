@@ -14,6 +14,8 @@ import { ReactiveEmailFormComponent } from './reactive-email-form/reactive-email
 import { NavComponent } from './nav/nav.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { LoginComponent } from './login/login.component';
+import { ProductFilterPipe } from './product-filter.pipe';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoginComponent } from './login/login.component';
     EmailFormComponent,
     ReactiveEmailFormComponent,
     NavComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFilterPipe,
+    ProductSearchComponent,
   ],
   imports: [
     BrowserModule,
