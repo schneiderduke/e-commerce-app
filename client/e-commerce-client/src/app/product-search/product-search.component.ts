@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'product-search',
@@ -6,6 +6,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit {
+  @Output('productSearch') inputToParent = new EventEmitter<string>();
   @ViewChild('productSearch') input; 
   productSearch: ElementRef;
   constructor() { }
@@ -15,6 +16,6 @@ export class ProductSearchComponent implements OnInit {
   }
 
   filter(value) {
-    console.log(value);
+    this.inputToParent.emit(value);
   }
 }

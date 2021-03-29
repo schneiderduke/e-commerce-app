@@ -10,7 +10,7 @@
     <product-search></product-search>
     <div class="container-fluid">
         <div class="row">
-            <div class="card col-md-3 panel-body border rounded" style="padding: 20px; margin: 40px;" *ngFor="let product of products">
+            <div class="card col-md-3 panel-body border rounded" style="padding: 20px; margin: 40px;" *ngFor="let product of products | productFilter">
 
                     <div class="card-title">{{product.title}}</div>
 
