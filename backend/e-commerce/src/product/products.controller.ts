@@ -21,8 +21,9 @@ export class ProductsController {
     }
 
     @Get()
-    getAllProducts(): any {
-        return {products: this.productsService.getProducts()};
+    async getAllProducts() {
+        const products = await this.productsService.getProducts();
+        return products;
     }
 
     @Get(':id')
@@ -31,22 +32,22 @@ export class ProductsController {
     }
 
     @Patch(':id')
-    updateProduct(
+    async updateProduct(
         @Param('id') prodId: string,
         @Body('title') prodTitle: string,
         @Body('description') prodDesc: string,
         @Body('price') prodPrice: number,
         @Body('imgPath') imgPath: string,
         @Body('productType') productType: string
-        ): any {
-            this.productsService.updateProduct(prodId, prodTitle, prodDesc, prodPrice, imgPath, productType);
+        ) {
+            await this.productsService.updateProduct(prodId, prodTitle, prodDesc, prodPrice, imgPath, productType);
             return null;
         }
 
     @Delete(':id')
-    removeProduct(
-        @Param('id') prodId: string) : any {
-            this.productsService.deleteProduct(prodId);
+    async removeProduct(
+        @Param('id') prodId: string) {
+            await this.productsService.deleteProduct(prodId);
             return null;
         }
 }
