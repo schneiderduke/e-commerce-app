@@ -1,11 +1,11 @@
-<!-- <form [formGroup]="formGroup">  
-   <div formGroupName="formGroup" id="login-container">
+<form [formGroup]="formGroup">  
+   <div id="login-container">
         <label for="userId">
             User ID
         </label>
         <input 
             required
-            [(ngModel)]="userId" 
+            formControlName="userId"
             type="text" 
             name="userId">
         <p></p>
@@ -14,9 +14,9 @@
         </label>
         <input 
             required
-            [(ngModel)]="password" 
+            formControlName="password"
             type="password" 
             name="password">
         <button (click)="submit()">Submit</button>
     </div>
-</form>  -->
+</form> 

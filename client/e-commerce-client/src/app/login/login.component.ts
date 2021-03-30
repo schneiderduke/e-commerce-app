@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +13,19 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup = this.fb.group({
       userId: '',
-      password: '' 
-    })
+      password: ''
+    });
   }
 
-  // submit(): boolean {
-  //   if((this.formGroup.get('userId') === 'admin') && (this.password === 'password')) {
-  //     console.log(true);
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  submit(): boolean {
+    this.formGroup.valueChanges.subscribe(console.log)
+    if((this.formGroup.controls['userId'].value === 'admin') && 
+    (this.formGroup.controls['password'].value === 'password')) 
+    {
+      console.log(true);
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
