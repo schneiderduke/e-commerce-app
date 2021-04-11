@@ -2,22 +2,20 @@
     <product-search (outputToParent)="receiveFilter($event)"></product-search>
     <div class="container-fluid">
         <div class="row" *ngIf="productsLoaded">
-            <div 
-            class="card col-md-3 panel-body border rounded" 
+            <mat-card 
+            class="col-md-3 panel-body border rounded" 
             style="padding: 20px; margin: 40px;" 
             *ngFor="let product of products | productFilter: productsFilter">
 
-                <div class="card-title product-title">{{product.title}}</div>
+                <mat-card-title class="card-title product-title">{{product.title}}</mat-card-title>
 
-                <div><img class="card-img-top img-fluid" alt="Responsive image" src= "{{ product.imgPath }}" /></div>
+                <div><img mat-card-image class="product-image" alt="Responsive image" src= "{{ product.imgPath }}" /></div>
 
-                <div class="card-body">${{product.price}}.00</div>
+                <mat-card-content>${{product.price}}.00</mat-card-content>
 
-                <div class="card-text">{{product.description}}</div>
+                <mat-card-content class="card-text">{{product.description}}</mat-card-content>
 
-                <div class="card-body">Product ID: {{product.id}}</div>
-
-            </div>
+        </mat-card>
         </div>
     </div>
 </div>

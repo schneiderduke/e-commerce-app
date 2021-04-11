@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Product } from '../product/product.model';
 import { CustomizeProductsService } from './customize-products.service';
 
@@ -12,10 +13,9 @@ export class CustomizeProductsComponent implements OnInit {
   showAddProduct: boolean = false;
   showDeleteProduct: boolean = false;
   postProductForm: FormGroup;
-  deleteProductForm: FormGroup;
   products: Product[];
   data: any;
-  constructor(private custProdService: CustomizeProductsService, private fb: FormBuilder) { }
+  constructor(private custProdService: CustomizeProductsService, private fb: FormBuilder, public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.postProductForm = this.fb.group({
@@ -25,10 +25,6 @@ export class CustomizeProductsComponent implements OnInit {
       productPrice: '',
       productType: ''
     });
-
-    this.deleteProductForm = this.fb.group({
-      productID: ''
-    })
 
     this.getProducts();
   }
@@ -41,9 +37,10 @@ export class CustomizeProductsComponent implements OnInit {
       imgPath: this.postProductForm.get('productImgPath').value,
       productType: this.postProductForm.get('productType').value
     }
-    this.custProdService.postProduct(tempProduct).subscribe( res =>
-      this.getProducts()
-   
+    this.custProdService.postProduct(tempProduct).subscribe( res => {
+      this.getProducts();
+      this.snackBar.open('Product Added');
+    }
     );
   }
 
@@ -55,8 +52,10 @@ export class CustomizeProductsComponent implements OnInit {
   }
 
   deleteProduct(id: string) {
-    this.custProdService.deleteProduct(id).subscribe( res =>
-      this.getProducts()
+    this.custProdService.deleteProduct(id).subscribe( res => {
+        this.getProducts();
+        this.snackBar.open('Product Deleted');
+      }
     );
   }
 

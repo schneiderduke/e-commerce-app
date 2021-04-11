@@ -1,6 +1,7 @@
 <div class="container-fluid cust-container">
+    <h3>Product Customization</h3>
     <div>
-        <button (click)="toggleAddProductView()" class="btn btn-primary toggle-button" #addProductView>Add a product</button>
+        <button mat-raised-button (click)="toggleAddProductView()" class="btn btn-primary toggle-button" #addProductView>Add a product</button>
     </div>
     <div *ngIf="showAddProduct" class="row">
         <form class="card-body" [formGroup]="postProductForm">
@@ -25,28 +26,28 @@
                 <input formControlName="productType" class="form-control" #productType  placeholder="Enter a product type.." type="text">
             </div>
             <div>
-                <button (click)="addProduct()" class="btn btn-success toggle-button" #addProductButton>Add Product</button>
+                <button mat-raised-button (click)="addProduct()" class="btn btn-success toggle-button" #addProductButton>Add Product</button>
             </div>
         </form>
     </div>
     <div>
-        <button #deleteProductView (click)="toggleDeleteProductView()" class="btn btn-danger toggle-button">Delete a product</button>
+        <button mat-raised-button #deleteProductView (click)="toggleDeleteProductView()" class="btn btn-danger toggle-button">Delete a product</button>
     </div>
-    <div *ngIf="showDeleteProduct" class="row">
-        <form class="card-body" [formGroup]="deleteProductForm">
-            <div>
-                <label for="productID">ID</label>
-                <input formControlName="productID" class="form-control" #productID  placeholder="Enter a product ID.." type="text">
-            </div>
-            <div class="card-body" *ngFor="let product of products">
-                <button (click)="deleteProduct(product.id)" class="btn btn-danger toggle-button">Delete this product</button>
-                <div>
-                <label for="productTitleDel">Product Title: </label>
-                <div #productTitleDel>{{ product.title }}</div>
-                </div>
-                <label for="productIDDel">Product ID: </label>
-                <div #productIDDel>{{ product.id }}</div>
-            </div>
+    <div *ngIf="showDeleteProduct" class="">
+        <form class="card-body row">
+            <mat-card class="product-del-card rounded m-3 col-md-3" *ngFor="let product of products">
+                <span>
+                    <label mat-card-title for="productTitleDel"> </label>
+                    <p mat-card-content #productTitleDel>Product Title: {{ product.title }}</p>
+                </span>
+                <span>
+                    <label mat-card-title for="productIDDel"></label>
+                    <p mat-card-content #productIDDel>Product ID: {{ product.id }}</p>
+                </span>
+                <mat-card-actions>
+                    <button mat-raised-button (click)="deleteProduct(product.id)" class="btn btn-danger toggle-button">Delete this product</button>
+                </mat-card-actions>
+            </mat-card>
         </form>
     </div>
 </div>
