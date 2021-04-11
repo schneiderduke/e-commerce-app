@@ -1,36 +1,52 @@
 <div class="container-fluid cust-container">
     <div>
-        <button (click)="toggleAddProductView()" class="btn btn-primary toggle-button" #addProduct>Add a product</button>
+        <button (click)="toggleAddProductView()" class="btn btn-primary toggle-button" #addProductView>Add a product</button>
     </div>
     <div *ngIf="showAddProduct" class="row">
-        <div class="card-body">
+        <form class="card-body" [formGroup]="postProductForm">
             <div>
                 <label for="productTitle">Title</label>
-                <input class="form-control" #productTitle  placeholder="Enter a product title.." type="text">
+                <input formControlName="productTitle" class="form-control" #productTitle  placeholder="Enter a product title.." type="text">
             </div>
             <div>  
-                <label for="productImage">Image</label>
-                <input class="form-control" #productImage  placeholder="Enter a product image url or path.." type="text">
+                <label for="productImgPath">Image Path</label>
+                <input formControlName="productImgPath" class="form-control" #productImgPath placeholder="Enter a product image url or path.." type="text">
             </div>  
             <div>
                 <label for="productDescription">Description</label>
-                <input class="form-control" #productDescription  placeholder="Enter a product description.." type="text">
+                <input formControlName="productDescription" class="form-control" #productDescription  placeholder="Enter a product description.." type="text">
             </div>
             <div>
                 <label for="productPrice">Price</label>
-                <input class="form-control" #productPrice  placeholder="Enter a product price.." type="text">
+                <input formControlName="productPrice" class="form-control" #productPrice  placeholder="Enter a product price.." type="number">
             </div>
-        </div>
+            <div>
+                <label for="productType">Product Type</label>
+                <input formControlName="productType" class="form-control" #productType  placeholder="Enter a product type.." type="text">
+            </div>
+            <div>
+                <button (click)="addProduct()" class="btn btn-success toggle-button" #addProductButton>Add Product</button>
+            </div>
+        </form>
     </div>
     <div>
-        <button #deleteProduct (click)="toggleDeleteProductView()" class="btn btn-danger toggle-button">Delete a product</button>
+        <button #deleteProductView (click)="toggleDeleteProductView()" class="btn btn-danger toggle-button">Delete a product</button>
     </div>
     <div *ngIf="showDeleteProduct" class="row">
-        <div class="card-body">
+        <form class="card-body" [formGroup]="deleteProductForm">
             <div>
                 <label for="productID">ID</label>
-                <input class="form-control" #productID  placeholder="Enter a product ID.." type="text">
+                <input formControlName="productID" class="form-control" #productID  placeholder="Enter a product ID.." type="text">
             </div>
-        </div>
+            <div class="card-body" *ngFor="let product of products">
+                <button (click)="deleteProduct(product.id)" class="btn btn-danger toggle-button">Delete this product</button>
+                <div>
+                <label for="productTitleDel">Product Title: </label>
+                <div #productTitleDel>{{ product.title }}</div>
+                </div>
+                <label for="productIDDel">Product ID: </label>
+                <div #productIDDel>{{ product.id }}</div>
+            </div>
+        </form>
     </div>
 </div>

@@ -14,7 +14,6 @@ export class ProductsController {
         @Body('imgPath') imgPath: string,
         @Body('productType') productType: string
         ): any {
-        
         const generatedId = this.productsService
             .insertProduct(prodTitle, prodDesc, prodPrice, imgPath, productType);
         return { id: generatedId };

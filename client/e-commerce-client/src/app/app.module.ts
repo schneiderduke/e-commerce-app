@@ -18,6 +18,7 @@ import { ProductFilterPipe } from './product-filter.pipe';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { ApiService } from './api.service';
 import { CustomizeProductsComponent } from './customize-products/customize-products.component';
+import { CustomizeProductsService } from './customize-products/customize-products.service';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { CustomizeProductsComponent } from './customize-products/customize-produ
     ApiService,
     ProductsService,
     ProductService,
+    CustomizeProductsService,
     AuthGuardGuard
   ],
   bootstrap: [AppComponent]
