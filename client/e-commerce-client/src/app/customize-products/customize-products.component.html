@@ -1,0 +1,36 @@
+<div class="container-fluid cust-container">
+    <div>
+        <button (click)="toggleAddProductView()" class="btn btn-primary toggle-button" #addProduct>Add a product</button>
+    </div>
+    <div *ngIf="showAddProduct" class="row">
+        <div class="card-body">
+            <div>
+                <label for="productTitle">Title</label>
+                <input class="form-control" #productTitle  placeholder="Enter a product title.." type="text">
+            </div>
+            <div>  
+                <label for="productImage">Image</label>
+                <input class="form-control" #productImage  placeholder="Enter a product image url or path.." type="text">
+            </div>  
+            <div>
+                <label for="productDescription">Description</label>
+                <input class="form-control" #productDescription  placeholder="Enter a product description.." type="text">
+            </div>
+            <div>
+                <label for="productPrice">Price</label>
+                <input class="form-control" #productPrice  placeholder="Enter a product price.." type="text">
+            </div>
+        </div>
+    </div>
+    <div>
+        <button #deleteProduct (click)="toggleDeleteProductView()" class="btn btn-danger toggle-button">Delete a product</button>
+    </div>
+    <div *ngIf="showDeleteProduct" class="row">
+        <div class="card-body">
+            <div>
+                <label for="productID">ID</label>
+                <input class="form-control" #productID  placeholder="Enter a product ID.." type="text">
+            </div>
+        </div>
+    </div>
+</div>

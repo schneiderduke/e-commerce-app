@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 import { Product } from '../product/product.model';
 import { Products } from './products.model';
 import { ProductsService } from './products.service';
@@ -13,14 +14,22 @@ export class ProductsComponent implements OnInit {
   data: any;
   productsFilter: string;
   productsLoaded: boolean = false;
-  constructor(private productsService: ProductsService) { }
+  @Input()
+  apis: any;
+  constructor(private productsService: ProductsService, private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.apiService.getApis().subscribe(res => {
+      Object.keys(res).forEach(key => {
+        if (key === 'products') {
+          this.getProducts(res[key]);
+        }
+      });
+    })
   }
 
-  getProducts(): any {
-    this.productsService.getProducts().subscribe((res => {
+  getProducts(apiLink: any): any {
+    this.productsService.getProducts(apiLink).subscribe((res => {
       this.data = res;
       this.products = this.data;
       this.productsLoaded = true;

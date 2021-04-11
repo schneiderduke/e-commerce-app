@@ -16,6 +16,9 @@ import { AuthGuardGuard } from './auth-guard.guard';
 import { LoginComponent } from './login/login.component';
 import { ProductFilterPipe } from './product-filter.pipe';
 import { ProductSearchComponent } from './product-search/product-search.component';
+import { ApiService } from './api.service';
+import { CustomizeProductsComponent } from './customize-products/customize-products.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { ProductSearchComponent } from './product-search/product-search.componen
     LoginComponent,
     ProductFilterPipe,
     ProductSearchComponent,
+    CustomizeProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { ProductSearchComponent } from './product-search/product-search.componen
     FormsModule
   ],
   providers: [
+    ApiService,
     ProductsService,
     ProductService,
     AuthGuardGuard
