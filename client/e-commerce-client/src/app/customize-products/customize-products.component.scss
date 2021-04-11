@@ -1,6 +1,13 @@
 .cust-container {
-    background-color: lightblue;
+    background-image: url('./../../assets/rp.jpg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
     padding: 50px;
+    height: 300px;
+    color: white;
 }
 .toggle-button {
     margin: 20px;

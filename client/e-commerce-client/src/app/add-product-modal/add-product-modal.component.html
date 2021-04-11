@@ -1,0 +1,30 @@
+<div> 
+    <h1 style="text-align: center;">Add a product</h1>
+    <div class="row">  
+        <form class="card-body" [formGroup]="postProductForm">
+            <div>
+                <label class="input-group"  for="productTitle">Title</label>
+                <input formControlName="productTitle" class="form-control" #productTitle  placeholder="Enter a product title.." type="text">
+            </div>
+            <div>  
+                <label class="input-group" for="productImgPath">Image Path</label>
+                <input formControlName="productImgPath" class="form-control" #productImgPath placeholder="Enter a product image url or path.." type="text">
+            </div>  
+            <div>
+                <label class="input-group"  for="productDescription">Description</label>
+                <input formControlName="productDescription" class="form-control" #productDescription  placeholder="Enter a product description.." type="text">
+            </div>
+            <div>
+                <label class="input-group"  for="productPrice">Price</label>
+                <input formControlName="productPrice" class="form-control" #productPrice  placeholder="Enter a product price.." type="number">
+            </div>
+            <div>
+                <label class="input-group"  for="productType">Product Type</label>
+                <input formControlName="productType" class="form-control" #productType  placeholder="Enter a product type.." type="text">
+            </div>
+            <div class="message">
+                <button mat-raised-button (click)="addProduct()" class="btn btn-success toggle-button" #addProductButton>Add Product</button>
+            </div>
+        </form>
+    </div>
+</div> 

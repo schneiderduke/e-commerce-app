@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import { ProductSearchComponent } from './product-search/product-search.componen
 import { ApiService } from './api.service';
 import { CustomizeProductsComponent } from './customize-products/customize-products.component';
 import { CustomizeProductsService } from './customize-products/customize-products.service';
+import { AddProductModalComponent } from './add-product-modal/add-product-modal.component';
+import { DeleteProductModalComponent } from './delete-product-modal/delete-product-modal.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { CustomizeProductsService } from './customize-products/customize-product
     ProductFilterPipe,
     ProductSearchComponent,
     CustomizeProductsComponent,
+    AddProductModalComponent,
+    DeleteProductModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ import { CustomizeProductsService } from './customize-products/customize-product
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     ApiService,

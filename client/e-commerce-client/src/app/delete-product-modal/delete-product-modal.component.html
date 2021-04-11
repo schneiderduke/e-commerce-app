@@ -1,0 +1,21 @@
+<div>
+    <h1 style="text-align: center;">Delete a product</h1>
+    <form class="card-body row">
+        <mat-card class="product-del-card rounded m-3 col-md-3" *ngFor="let product of products">
+            <span>
+                <label mat-card-title for="productTitleDel"> </label>
+                <p mat-card-content #productTitleDel>Product Title: {{ product.title }}</p>
+            </span>
+            <span>
+                <div><img mat-card-image class="product-image" alt="Responsive image" src= "{{ product.imgPath }}" /></div>
+            </span>
+            <span>
+                <label mat-card-title for="productIDDel"></label>
+                <p mat-card-content #productIDDel>Product ID: {{ product.id }}</p>
+            </span>
+            <mat-card-actions>
+                <button mat-raised-button (click)="deleteProduct(product.id)" class="btn btn-danger toggle-button">Delete this product</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

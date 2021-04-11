@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AddProductModalComponent } from '../add-product-modal/add-product-modal.component';
+import { DeleteProductModalComponent } from '../delete-product-modal/delete-product-modal.component';
 import { Product } from '../product/product.model';
 import { CustomizeProductsService } from './customize-products.service';
 
@@ -9,63 +12,23 @@ import { CustomizeProductsService } from './customize-products.service';
   templateUrl: './customize-products.component.html',
   styleUrls: ['./customize-products.component.scss']
 })
-export class CustomizeProductsComponent implements OnInit {
-  showAddProduct: boolean = false;
-  showDeleteProduct: boolean = false;
+export class CustomizeProductsComponent {
   postProductForm: FormGroup;
   products: Product[];
   data: any;
-  constructor(private custProdService: CustomizeProductsService, private fb: FormBuilder, public snackBar: MatSnackBar) { }
-
-  ngOnInit(): void {
-    this.postProductForm = this.fb.group({
-      productTitle: '',
-      productImgPath: '',
-      productDescription: '',
-      productPrice: '',
-      productType: ''
+  constructor(public dialog: MatDialog) { }
+  addProductModal() {
+    const dialogRef = this.dialog.open(AddProductModalComponent, {
+      width: '900px',
+      data: {}
     });
-
-    this.getProducts();
   }
 
-  addProduct() {
-    const tempProduct = {
-      title: this.postProductForm.get('productTitle').value,
-      description: this.postProductForm.get('productDescription').value,
-      price: this.postProductForm.get('productPrice').value,
-      imgPath: this.postProductForm.get('productImgPath').value,
-      productType: this.postProductForm.get('productType').value
-    }
-    this.custProdService.postProduct(tempProduct).subscribe( res => {
-      this.getProducts();
-      this.snackBar.open('Product Added');
-    }
-    );
-  }
-
-  getProducts() {
-    this.custProdService.getProducts().subscribe((res => {
-      this.data = res;
-      this.products = this.data;
-    }))
-  }
-
-  deleteProduct(id: string) {
-    this.custProdService.deleteProduct(id).subscribe( res => {
-        this.getProducts();
-        this.snackBar.open('Product Deleted');
-      }
-    );
-  }
-
-  toggleAddProductView() {
-    this.showAddProduct = !this.showAddProduct;
-  }
-
-  toggleDeleteProductView() {
- 
-    this.showDeleteProduct = !this.showDeleteProduct;
+  deleteProductModal() {
+    const dialogRef = this.dialog.open(DeleteProductModalComponent, {
+      width: '900px',
+      data: {}
+    });
 
   }
 }

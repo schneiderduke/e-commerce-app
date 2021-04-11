@@ -1,53 +1,12 @@
+
 <div class="container-fluid cust-container">
     <h3>Product Customization</h3>
     <div>
-        <button mat-raised-button (click)="toggleAddProductView()" class="btn btn-primary toggle-button" #addProductView>Add a product</button>
+        <button mat-raised-button (click)="addProductModal()" class="btn btn-primary toggle-button" #addProductView>Add a product</button>
     </div>
-    <div *ngIf="showAddProduct" class="row">
-        <form class="card-body" [formGroup]="postProductForm">
-            <div>
-                <label for="productTitle">Title</label>
-                <input formControlName="productTitle" class="form-control" #productTitle  placeholder="Enter a product title.." type="text">
-            </div>
-            <div>  
-                <label for="productImgPath">Image Path</label>
-                <input formControlName="productImgPath" class="form-control" #productImgPath placeholder="Enter a product image url or path.." type="text">
-            </div>  
-            <div>
-                <label for="productDescription">Description</label>
-                <input formControlName="productDescription" class="form-control" #productDescription  placeholder="Enter a product description.." type="text">
-            </div>
-            <div>
-                <label for="productPrice">Price</label>
-                <input formControlName="productPrice" class="form-control" #productPrice  placeholder="Enter a product price.." type="number">
-            </div>
-            <div>
-                <label for="productType">Product Type</label>
-                <input formControlName="productType" class="form-control" #productType  placeholder="Enter a product type.." type="text">
-            </div>
-            <div>
-                <button mat-raised-button (click)="addProduct()" class="btn btn-success toggle-button" #addProductButton>Add Product</button>
-            </div>
-        </form>
-    </div>
+    
     <div>
-        <button mat-raised-button #deleteProductView (click)="toggleDeleteProductView()" class="btn btn-danger toggle-button">Delete a product</button>
+        <button mat-raised-button #deleteProductView (click)="deleteProductModal()" class="btn btn-danger toggle-button">Delete a product</button>
     </div>
-    <div *ngIf="showDeleteProduct" class="">
-        <form class="card-body row">
-            <mat-card class="product-del-card rounded m-3 col-md-3" *ngFor="let product of products">
-                <span>
-                    <label mat-card-title for="productTitleDel"> </label>
-                    <p mat-card-content #productTitleDel>Product Title: {{ product.title }}</p>
-                </span>
-                <span>
-                    <label mat-card-title for="productIDDel"></label>
-                    <p mat-card-content #productIDDel>Product ID: {{ product.id }}</p>
-                </span>
-                <mat-card-actions>
-                    <button mat-raised-button (click)="deleteProduct(product.id)" class="btn btn-danger toggle-button">Delete this product</button>
-                </mat-card-actions>
-            </mat-card>
-        </form>
-    </div>
+    
 </div>
